@@ -17,18 +17,25 @@ class Table extends Component {
     this.colChanged = this.colChanged.bind(this)
   }
 
-  rowChanged() {
-    console.log("TEST FUNCTION CHANGE ROW")
-    this.setState({ rows: this.state.rows + 1 })
+  // rowChanged(n = 1) {
+  //   console.log("TEST FUNCTION CHANGE ROW")
+  //   this.setState({ rows: this.state.rows + n })
 
-    console.log(this.state.rows)
-  }
+  //   console.log(this.state.rows)
+  // }
 
   colChanged() {
     console.log("TEST FUNCTION CHANGE COL")
     this.setState({ cols: this.state.cols + 1 })
 
     console.log(this.state.cols)
+  }
+
+  rowChanged(n = 1) {
+    console.log("TEST FUNCTION CHANGE ROW")
+    this.setState({ rows: this.state.rows + n })
+
+    console.log(this.state.rows)
   }
 
   render() {
@@ -39,7 +46,7 @@ class Table extends Component {
 
     return (
       <div id="content">
-        <button onClick={this.rowChanged}>CLICK row</button>
+        <button onClick={() => this.rowChanged()}>CLICK row</button>
         <button onClick={this.colChanged}>CLICK col</button>
         <table>
           <tbody>{rows}</tbody>
