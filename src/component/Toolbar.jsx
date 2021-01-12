@@ -1,73 +1,36 @@
-import React from "react"
-import { render } from "react-dom"
+import React from 'react';
+import { render } from 'react-dom';
 
-// import function
-import { rowChanged } from "./Table"
+import store from '../States';
 
 class Toolbar extends React.Component {
+  constructor() {
+    super();
+    this.state = store.state;
+  }
   render() {
     return (
       <div>
-        <button onClick={this.rowChanged}> Add Column </button>
+        <button> Add Column </button>
+        <button> Remove Column </button>
+        <button> Add Row </button>
+        <button> Remove Row </button>
+        <button> Fill All </button>
+        <button> Fill Uncolored </button>
+        <button> Clear All </button>
+
         <button
           onClick={() => {
-            window.alert("Clicked!")
+            this.state.cols += 1;
+            console.log(this.state.cols);
           }}
         >
-          {" "}
-          Remove Column{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Add Row{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Remove Row{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Fill All{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Fill Uncolored{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Clear All{" "}
-        </button>
-        <button
-          onClick={() => {
-            window.alert("Clicked!")
-          }}
-        >
-          {" "}
-          Color Select{" "}
+          {' '}
+          Color Select{' '}
         </button>
       </div>
-    )
+    );
   }
 }
 
-export default Toolbar
+export default Toolbar;

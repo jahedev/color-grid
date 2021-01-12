@@ -1,13 +1,13 @@
-import React, { Component } from "react"
-import TableCell from "./TableCell"
+import React, { Component } from 'react';
+import TableCell from './TableCell';
+
+import store from '../States';
 
 class TableRow extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super();
 
-    this.state = {
-      cols: this.props.cols,
-    }
+    this.state = store.state;
   }
 
   //   colChanged() {
@@ -18,13 +18,13 @@ class TableRow extends Component {
   //   }
 
   render() {
-    let cols = []
-    for (let i = 1; i <= this.props.cols; i++) {
-      cols.push(<TableCell key={i} data="&nbsp;" />)
+    let cols = [];
+    for (let i = 1; i <= this.state.cols; i++) {
+      cols.push(<TableCell key={i} data='&nbsp;' />);
     }
 
-    return <tr>{cols}</tr>
+    return <tr>{cols}</tr>;
   }
 }
 
-export default TableRow
+export default TableRow;
