@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 
-import TableCell from "./TableCell"
 import TableRow from "./TableRow"
 
 class Table extends Component {
@@ -14,10 +13,8 @@ class Table extends Component {
   render() {
     let rows = []
     for (let i = 1; i <= this.state.rows; i++) {
-      console.log(i)
-      rows.push(<TableRow cols={this.state.cols} />)
+      rows.push(<TableRow key={i} cols={this.state.cols} />)
     }
-    console.log(rows)
     return (
       <div id="content">
         <table>

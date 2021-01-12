@@ -11,8 +11,7 @@ class TableRow extends Component {
   render() {
     let cols = []
     for (let i = 1; i <= this.props.cols; i++) {
-      console.log(i)
-      cols.push(<TableCell data="TEST 2" />)
+      cols.push(<TableCell key={i} data="TEST 2" />)
     }
     return <tr>{cols}</tr>
   }
