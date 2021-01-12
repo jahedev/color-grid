@@ -1,0 +1,17 @@
+table {
+  border-collapse: collapse;
+  margin: 5px;
+  /* uncomment for center align
+   margin: auto;
+   */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+td {
+  border: 1px solid rgb(220, 220, 220);
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+}
