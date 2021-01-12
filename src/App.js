@@ -1,11 +1,12 @@
-import Table from './component/Table'
+import Table from "./component/Table"
 
 function App() {
   return (
     <div>
+      {/* <Toolbar /> */}
       <Table />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
