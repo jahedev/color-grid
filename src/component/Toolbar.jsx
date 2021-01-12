@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Button from './Button';
 
 import store from '../States';
 
@@ -11,6 +12,7 @@ class Toolbar extends React.Component {
   render() {
     return (
       <div>
+        <Button name='Test 1' click={test1} />
         <button> Add Column </button>
         <button> Remove Column </button>
         <button> Add Row </button>
@@ -31,6 +33,10 @@ class Toolbar extends React.Component {
       </div>
     );
   }
+}
+
+function test1() {
+  console.log('test 1');
 }
 
 export default Toolbar;
