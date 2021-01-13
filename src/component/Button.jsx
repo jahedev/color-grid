@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 
 class Button extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: props.name,
+      func: props.func,
+    };
+  }
+
   render() {
-    return <button onClick={this.props.click}>{this.props.name}</button>;
+    console.log('Click:', this.state.func);
+    return <button onClick={this.state.func}>{this.state.name}</button>;
   }
 }
 

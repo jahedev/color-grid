@@ -12,6 +12,7 @@ export default class App extends Component {
     };
 
     this.genKey = this.genKey.bind(this);
+    // this.genToolbar = this.genToolbar.bind(this);
     this.addRow = this.addRow.bind(this);
     this.addCol = this.addCol.bind(this);
     this.delRow = this.delRow.bind(this);
@@ -33,9 +34,9 @@ export default class App extends Component {
 
   addCol = (n = 1) => {
     this.setState({ cols: ++this.state.cols });
-    // setTimeout(() => {
-    //   console.log(this.state);
-    // });
+    setTimeout(() => {
+      console.log('ZZZ:', this.state);
+    });
   };
 
   delRow = (n = 1) => {
@@ -48,19 +49,29 @@ export default class App extends Component {
 
   render() {
     console.log('Re-rendering: App');
-    console.log(this.state);
 
     return (
       <div>
         <h1>
           Rows: {this.state.rows}, Cols: {this.state.cols}
         </h1>
-        {/* <Toolbar clickHandler={this.handleClick} /> */}
-        {/* <Button name='Add Row' click={this.addRows} /> */}
-        <button onClick={this.addRow}>Add Row</button>
-        <button onClick={this.addCol}>Add Column</button>
-        <button onClick={this.delRow}>Del Row</button>
-        <button onClick={this.delCol}>Del Column</button>
+        {/* <Toolbar clickHandler={this.handleClick} />
+         <Button name='Add Row' click={this.addRows} /> */}
+
+        {/* Eventually: */}
+        {
+          <Toolbar
+            toolbar={[
+              { name: 'Add Row', func: this.addRow },
+              { name: 'Add Column', func: this.addCol },
+              { name: 'Del Row', func: this.delRow },
+              { name: 'Del Column', func: this.delCol },
+              { name: 'Fill All', func: this.delCol },
+              { name: 'Fill Uncolored', func: this.delCol },
+              { name: 'Clear All', func: this.delCol },
+            ]}
+          />
+        }
         <Table
           key={this.state.rows * this.state.cols * 3}
           rows={this.state.rows}

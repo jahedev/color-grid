@@ -5,14 +5,28 @@ import Button from './Button';
 import store from '../States';
 
 class Toolbar extends React.Component {
-  constructor() {
-    super();
-    // this.state = store.state;
+  constructor(props) {
+    super(props);
+    this.state = {
+      toolbar: props.toolbar,
+    };
   }
+
+  key = 7799966;
+
   render() {
+    console.log('X: ', this.state.toolbar);
+    console.log(this.state.toolbar[0]['func']);
     return (
       <div>
-        <Button
+        {this.state.toolbar.map((button) => (
+          <Button
+            key={++this.key}
+            name={button['name']}
+            func={button['func']}
+          />
+        ))}
+        {/* <Button
           name='Add 1 Column'
           click={() => {
             // this.state.cols += 1;
@@ -37,7 +51,7 @@ class Toolbar extends React.Component {
         >
           {' '}
           Color Select{' '}
-        </button>
+        </button> */}
       </div>
     );
   }
