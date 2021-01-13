@@ -7,9 +7,8 @@ import store from '../States';
 import '../styles/table.css';
 
 class Table extends Component {
-  constructor() {
-    super();
-    this.state = store.state;
+  constructor(props) {
+    super(props);
 
     this.rowChanged = this.rowChanged.bind(this);
     this.colChanged = this.colChanged.bind(this);
@@ -19,19 +18,13 @@ class Table extends Component {
     console.log('TEST FUNCTION CHANGE ROW');
     this.setState({ rows: this.state.rows + n });
 
-    console.log(this.state.rows);
-  }
-
-  handleRow() {
-    this.setState();
+    console.log(this.state);
   }
 
   colChanged() {
     console.log('TEST FUNCTION CHANGE COL');
     console.log('Cols: ', this.state.cols);
-    this.setState({ cols: this.state.cols + 1 });
-
-    console.log(this.state.cols);
+    store.state.cols += 1;
   }
 
   rowChanged(n = 1) {

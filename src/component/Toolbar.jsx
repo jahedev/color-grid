@@ -7,12 +7,20 @@ import store from '../States';
 class Toolbar extends React.Component {
   constructor() {
     super();
-    this.state = store.state;
+    // this.state = store.state;
   }
   render() {
     return (
       <div>
-        <Button name='Test 1' click={test1} />
+        <Button
+          name='Add 1 Column'
+          click={() => {
+            // this.state.cols += 1;
+            store.state.cols += 1;
+
+            console.log(store.state);
+          }}
+        />
         <button> Add Column </button>
         <button> Remove Column </button>
         <button> Add Row </button>

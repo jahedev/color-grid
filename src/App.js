@@ -1,13 +1,24 @@
-import Table from "./component/Table"
-import Toolbar from "./component/Toolbar"
+import React, { Component } from 'react';
+import Table from './component/Table';
+import Toolbar from './component/Toolbar';
 
-function App() {
-  return (
-    <div>
-      <Toolbar />
-      <Table rows="10" cols="10" />
-    </div>
-  )
+export default class App extends Component {
+  state = {
+    rows: 15,
+    cols: 15,
+  };
+  render() {
+    return (
+      <div>
+        <Toolbar clickHandler={this.handleClick} />
+        <Table rows={this.state.rows} cols={this.state.cols} />
+      </div>
+    );
+  }
+  handleClick = (buttonName) => {
+    this.setState({
+      rows: 5,
+      cols: 5,
+    });
+  };
 }
-
-export default App
