@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import TableRow from './TableRow';
-import store from '../States';
+// import store from '../States';
 
 // CSS
 import '../styles/table.css';
@@ -9,41 +9,47 @@ import '../styles/table.css';
 class Table extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      rows: props.rows,
+      cols: props.cols,
+    };
 
-    this.rowChanged = this.rowChanged.bind(this);
-    this.colChanged = this.colChanged.bind(this);
+    // this.rowChanged = this.rowChanged.bind(this);
+    // this.colChanged = this.colChanged.bind(this);
   }
 
-  rowChanged(n = 1) {
-    console.log('TEST FUNCTION CHANGE ROW');
-    this.setState({ rows: this.state.rows + n });
+  // rowChanged(n = 1) {
+  //   console.log('TEST FUNCTION CHANGE ROW');
+  //   this.setState({ rows: this.state.rows + n });
 
-    console.log(this.state);
-  }
+  //   console.log(this.state);
+  // }
 
-  colChanged() {
-    console.log('TEST FUNCTION CHANGE COL');
-    console.log('Cols: ', this.state.cols);
-    store.state.cols += 1;
-  }
+  // colChanged() {
+  //   console.log('TEST FUNCTION CHANGE COL');
+  //   console.log('Cols: ', this.state.cols);
+  //   store.state.cols += 1;
+  // }
 
-  rowChanged(n = 1) {
-    console.log('TEST FUNCTION CHANGE ROW');
-    this.setState({ rows: this.state.rows + n });
+  // rowChanged(n = 1) {
+  //   console.log('TEST FUNCTION CHANGE ROW');
+  //   this.setState({ rows: this.state.rows + n });
 
-    console.log(this.state.rows);
-  }
+  //   console.log(this.state.rows);
+  // }
 
   render() {
+    console.log('Re-rendering: Table\n', this.state.rows, this.state.cols);
     let rows = [];
     for (let i = 1; i <= this.state.rows; i++) {
+      console.log('Cols:', this.state.cols);
       rows.push(<TableRow key={i} cols={this.state.cols} />);
     }
 
     return (
       <div id='content'>
-        <button onClick={() => this.rowChanged()}>CLICK row</button>
-        <button onClick={this.colChanged}>CLICK col</button>
+        {/* <button onClick={() => this.rowChanged()}>CLICK row</button>
+        <button onClick={this.colChanged}>CLICK col</button> */}
         <table>
           <tbody>{rows}</tbody>
         </table>

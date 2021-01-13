@@ -4,10 +4,12 @@ import TableCell from './TableCell';
 import store from '../States';
 
 class TableRow extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = store.state;
+    this.state = {
+      cols: props.cols,
+    };
   }
 
   //   colChanged() {
