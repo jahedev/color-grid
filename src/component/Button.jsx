@@ -10,7 +10,6 @@ class Button extends Component {
   }
 
   render() {
-    console.log('Click:', this.state.func);
     return <button onClick={this.state.func}>{this.state.name}</button>;
   }
 }

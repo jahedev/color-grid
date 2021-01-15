@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
-import Button from './component/Button';
 
 export default class App extends Component {
   constructor(props) {
@@ -12,11 +11,11 @@ export default class App extends Component {
     };
 
     this.genKey = this.genKey.bind(this);
-    // this.genToolbar = this.genToolbar.bind(this);
     this.addRow = this.addRow.bind(this);
     this.addCol = this.addCol.bind(this);
     this.delRow = this.delRow.bind(this);
     this.delCol = this.delCol.bind(this);
+    this.handleColoring = this.handleColoring.bind(this);
   }
 
   genKey = () => {
@@ -47,18 +46,23 @@ export default class App extends Component {
     this.state.cols > 1 && this.setState({ cols: --this.state.cols });
   };
 
-  render() {
-    console.log('Re-rendering: App');
+  handleColoring = (e) => {
+    if (e.target.tagName == 'TD') {
+      console.log(e.target);
 
+      const td = e.target;
+      if (true) {
+        td.style.backgroundColor = 'red';
+      }
+    }
+  };
+
+  render() {
     return (
       <div>
         <h1>
           Rows: {this.state.rows}, Cols: {this.state.cols}
         </h1>
-        {/* <Toolbar clickHandler={this.handleClick} />
-         <Button name='Add Row' click={this.addRows} /> */}
-
-        {/* Eventually: */}
         {
           <Toolbar
             toolbar={[
@@ -72,11 +76,14 @@ export default class App extends Component {
             ]}
           />
         }
-        <Table
-          key={this.state.rows * this.state.cols * 3}
-          rows={this.state.rows}
-          cols={this.state.cols}
-        />
+        <div className='table' onMouseOver={this.handleColoring}>
+          <Table
+            key={this.state.rows * this.state.cols * 3}
+            rows={this.state.rows}
+            cols={this.state.cols}
+            onClick={(e) => this.handleColoring(e)}
+          />
+        </div>
       </div>
     );
   }

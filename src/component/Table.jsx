@@ -39,10 +39,8 @@ class Table extends Component {
   // }
 
   render() {
-    console.log('Re-rendering: Table\n', this.state.rows, this.state.cols);
     let rows = [];
     for (let i = 1; i <= this.state.rows; i++) {
-      console.log('Cols:', this.state.cols);
       rows.push(<TableRow key={i} cols={this.state.cols} />);
     }
 
