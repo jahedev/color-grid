@@ -8,7 +8,8 @@ export default class App extends Component {
     this.state = {
       rows: 10,
       cols: 10,
-      grid: [[], []],
+      grid: [[]],
+      color: 'red',
     };
 
     this.genKey = this.genKey.bind(this);
@@ -48,10 +49,23 @@ export default class App extends Component {
   };
 
   handleColoring = (e) => {
+    const color = this.state.color;
+
     if (e.target.tagName == 'TD') {
       let colNum = Number(e.target.className);
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
+
+      let grid = [[]];
+
+      for (var i = 0; i < 10; i++) {
+        grid[i] = []; // <===== initialize the row
+        for (var j = 0; j < 10; j++) {
+          grid[i][j] = 'red';
+        }
+      }
+
+      this.setState({ grid: grid });
 
       const td = e.target;
 
