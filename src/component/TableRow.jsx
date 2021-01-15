@@ -3,29 +3,25 @@ import TableCell from './TableCell';
 
 import store from '../States';
 
+var colNum = 0;
+
 class TableRow extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       cols: props.cols,
+      rowNum: props.rowNum,
     };
   }
-
-  //   colChanged() {
-  //     console.log("TEST FUNCTION CHANGE COL")
-  //     this.setState({ cols: this.state.cols + 2 })
-
-  //     console.log(this.state.cols)
-  //   }
 
   render() {
     let cols = [];
     for (let i = 1; i <= this.state.cols; i++) {
-      cols.push(<TableCell key={i} data='&nbsp;' />);
+      cols.push(<TableCell colNum={colNum++} key={i} data='&nbsp;' />);
     }
-
-    return <tr>{cols}</tr>;
+    colNum = 0;
+    return <tr className={this.state.rowNum}>{cols}</tr>;
   }
 }
 
