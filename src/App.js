@@ -63,7 +63,10 @@ export default class App extends Component {
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
 
-      const td = e.target;
+      // console.log(this.state.grid[0][0]);
+      let grid = this.state.grid;
+      grid[rowNum][colNum] = color;
+      this.setState({ grid: grid });
 
       // td.style.backgroundColor = 'red';
     }
