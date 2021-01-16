@@ -60,7 +60,7 @@ button {
 button:hover {
   transition: all 0.5s;
   background-color: var(--dark-light);
-  color: #ffe0d8;
+  color: #16c79a;
 }
 
 button {
