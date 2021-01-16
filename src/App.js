@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
 
+var limit = 25;
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -24,9 +26,9 @@ export default class App extends Component {
     let grid = [[]];
 
     // user is never allowed to add more than 50 columns or rows
-    for (var i = 0; i < 50; i++) {
+    for (var i = 0; i < limit; i++) {
       grid[i] = []; // <===== initialize the row
-      for (var j = 0; j < 50; j++) {
+      for (var j = 0; j < limit; j++) {
         grid[i][j] = '';
       }
     }
@@ -40,11 +42,11 @@ export default class App extends Component {
   };
 
   addRow = (n = 1) => {
-    if (this.state.rows < 50) this.setState({ rows: ++this.state.rows });
+    if (this.state.rows < limit) this.setState({ rows: ++this.state.rows });
   };
 
   addCol = (n = 1) => {
-    if (this.state.cols < 50) this.setState({ cols: ++this.state.cols });
+    if (this.state.cols < limit) this.setState({ cols: ++this.state.cols });
   };
 
   delRow = (n = 1) => {
