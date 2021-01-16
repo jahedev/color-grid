@@ -3,6 +3,7 @@ import Table from './component/Table';
 import Toolbar from './component/Toolbar';
 
 var limit = 25;
+var updateGrid;
 
 export default class App extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ export default class App extends Component {
       }
     }
 
+    updateGrid = grid;
     this.setState({ grid: grid });
   }
 
@@ -42,18 +44,22 @@ export default class App extends Component {
   };
 
   addRow = (n = 1) => {
+    this.setState({ grid: updateGrid });
     if (this.state.rows < limit) this.setState({ rows: ++this.state.rows });
   };
 
   addCol = (n = 1) => {
+    this.setState({ grid: updateGrid });
     if (this.state.cols < limit) this.setState({ cols: ++this.state.cols });
   };
 
   delRow = (n = 1) => {
+    this.setState({ grid: updateGrid });
     this.state.rows > 1 && this.setState({ rows: --this.state.rows });
   };
 
   delCol = (n = 1) => {
+    this.setState({ grid: updateGrid });
     this.state.cols > 1 && this.setState({ cols: --this.state.cols });
   };
 
@@ -65,12 +71,8 @@ export default class App extends Component {
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
 
-      // console.log(this.state.grid[0][0]);
-      let grid = this.state.grid;
-      grid[rowNum][colNum] = color;
-      this.setState({ grid: grid });
-
-      // td.style.backgroundColor = 'red';
+      updateGrid[rowNum][colNum] = color;
+      e.target.style.backgroundColor = 'red';
     }
   };
 
