@@ -97,7 +97,7 @@ export default class App extends Component {
             key={this.state.rows * this.state.cols * 3}
             rows={this.state.rows}
             cols={this.state.cols}
-            onClick={(e) => this.handleColoring(e)}
+            grid={this.state.grid}
           />
         </div>
       </div>

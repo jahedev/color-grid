@@ -12,6 +12,7 @@ class TableRow extends Component {
     this.state = {
       cols: props.cols,
       rowNum: props.rowNum,
+      colgrid: props.colgrid,
     };
   }
 

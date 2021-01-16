@@ -14,13 +14,17 @@ class Table extends Component {
     this.state = {
       rows: props.rows,
       cols: props.cols,
+      grid: props.grid,
     };
   }
 
   render() {
     let rows = [];
     for (let i = 1; i <= this.state.rows; i++) {
-      rows.push(<TableRow rowNum={rowNum++} key={i} cols={this.state.cols} />);
+      let g = i - 1;
+      let color = rows.push(
+        <TableRow rowNum={rowNum++} key={i} cols={this.state.cols} />
+      );
     }
 
     rowNum = 0;
