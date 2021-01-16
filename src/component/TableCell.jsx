@@ -9,7 +9,13 @@ class TableCell extends Component {
   }
 
   render() {
-    return <td className={this.state.colNum}>{this.props.data}</td>;
+    const { color = '' } = this.props;
+
+    return (
+      <td style={{ backgroundColor: color }} className={this.state.colNum}>
+        {this.props.data}
+      </td>
+    );
   }
 }
 
