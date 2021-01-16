@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
+import { SketchPicker } from 'react-color';
 import './styles/app.css';
 
 var limit = 25;
@@ -18,6 +19,7 @@ function getRandomColor() {
 export default class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       rows: 10,
       cols: 10,
@@ -81,18 +83,26 @@ export default class App extends Component {
     this.state.cols > 1 && this.setState({ cols: --this.state.cols });
   };
 
+  changeColor = (color) => {
+    this.setState({ color : color.rgb })
+    console.log(this.state.color);
+  };
+
   handleColoring = (e) => {
     const color = this.state.color;
+
+  
 
     if (e.target.tagName == 'TD') {
       let colNum = Number(e.target.className);
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
-
       updateGrid[rowNum][colNum] = color;
       e.target.style.backgroundColor = color;
+
     }
   };
+
 
   render() {
     console.log('rendered');
@@ -119,6 +129,7 @@ export default class App extends Component {
         <h5>
           Rows: {this.state.rows}, Cols: {this.state.cols}
         </h5>
+
         <div className='table' onMouseOver={this.handleColoring}>
           <Table
             key={this.state.rows * this.state.cols * 3}
@@ -128,6 +139,7 @@ export default class App extends Component {
             color={this.state.color}
           />
         </div>
+      <SketchPicker color={this.state.color} onChange = {this.changeColor } />
       </div>
     );
   }
