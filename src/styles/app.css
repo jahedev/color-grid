@@ -67,6 +67,10 @@ button {
   background-color: var(--dark);
 }
 
+.red {
+  color: #f05454;
+}
+
 .table {
   display: flex;
   align-items: center;

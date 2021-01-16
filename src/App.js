@@ -53,7 +53,7 @@ export default class App extends Component {
       const h1 = document.querySelector('h1');
       const color = getRandomColor();
       h1.style.color = color;
-    }, 1000);
+    }, 1200);
   }
 
   genKey = () => {
@@ -99,7 +99,9 @@ export default class App extends Component {
     return (
       <div>
         <div className='header-container'>
-          <h1>React.js Color Grid</h1>
+          <h1>
+            <span className='red'>React.js</span> Color Grid
+          </h1>
           {
             <Toolbar
               toolbar={[
