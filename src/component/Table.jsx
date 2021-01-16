@@ -21,9 +21,15 @@ class Table extends Component {
   render() {
     let rows = [];
     for (let i = 1; i <= this.state.rows; i++) {
-      let g = i - 1;
+      let colgrid = this.state.grid[i - 1];
       let color = rows.push(
-        <TableRow rowNum={rowNum++} key={i} cols={this.state.cols} />
+        <TableRow
+          colgrid={colgrid}
+          rowNum={rowNum++}
+          key={i}
+          cols={this.state.cols}
+          color={this.props.color}
+        />
       );
     }
 

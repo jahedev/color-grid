@@ -16,7 +16,7 @@ class Toolbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='toolbar'>
         {this.state.toolbar.map((button) => (
           <Button
             key={++this.key}
