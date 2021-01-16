@@ -19,7 +19,11 @@ class TableRow extends Component {
   render() {
     let cols = [];
     for (let i = 1; i <= this.state.cols; i++) {
-      cols.push(<TableCell colNum={colNum++} key={i} data='&nbsp;' />);
+      let color = this.state.colgrid[i - 1];
+      cols.push(
+        <TableCell color={color} colNum={colNum++} key={i} data='&nbsp;' />
+        // <TableCell colNum={colNum++} key={i} data='&nbsp;' />
+      );
     }
     colNum = 0;
     return <tr className={this.state.rowNum}>{cols}</tr>;

@@ -20,24 +20,31 @@ export default class App extends Component {
     this.handleColoring = this.handleColoring.bind(this);
   }
 
+  componentWillMount() {
+    let grid = [[]];
+
+    // user is never allowed to add more than 50 columns or rows
+    for (var i = 0; i < 50; i++) {
+      grid[i] = []; // <===== initialize the row
+      for (var j = 0; j < 50; j++) {
+        grid[i][j] = '';
+      }
+    }
+
+    this.setState({ grid: grid });
+  }
+
   genKey = () => {
     console.log(this.state.rows * this.state.cols * 3);
     return this.state.rows * this.state.cols * 3;
   };
 
   addRow = (n = 1) => {
-    this.setState({ rows: ++this.state.rows });
-    this.forceUpdate();
-    setTimeout(() => {
-      console.log(this.state);
-    });
+    if (this.state.rows < 50) this.setState({ rows: ++this.state.rows });
   };
 
   addCol = (n = 1) => {
-    this.setState({ cols: ++this.state.cols });
-    setTimeout(() => {
-      console.log('ZZZ:', this.state);
-    });
+    if (this.state.cols < 50) this.setState({ cols: ++this.state.cols });
   };
 
   delRow = (n = 1) => {
@@ -56,17 +63,6 @@ export default class App extends Component {
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
 
-      let grid = [[]];
-
-      for (var i = 0; i < 10; i++) {
-        grid[i] = []; // <===== initialize the row
-        for (var j = 0; j < 10; j++) {
-          grid[i][j] = 'red';
-        }
-      }
-
-      this.setState({ grid: grid });
-
       const td = e.target;
 
       // td.style.backgroundColor = 'red';
@@ -74,6 +70,7 @@ export default class App extends Component {
   };
 
   render() {
+    console.log('rendered');
     return (
       <div>
         <h1>
