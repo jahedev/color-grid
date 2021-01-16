@@ -28,6 +28,7 @@ class Table extends Component {
           rowNum={rowNum++}
           key={i}
           cols={this.state.cols}
+          color={this.props.color}
         />
       );
     }

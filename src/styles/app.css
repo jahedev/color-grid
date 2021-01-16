@@ -2,7 +2,7 @@
 
 :root {
   --dark: #222831;
-  --dark-light: #364f6b;
+  --dark-light: #3b5360;
 }
 
 * {
@@ -16,10 +16,30 @@ body {
   display: flex;
 }
 
+.header-container {
+  color: white;
+  background-color: var(--dark);
+}
+
 h1,
 h5 {
   text-align: center;
   margin: 10px 0;
+}
+
+h1 {
+  padding: 20px 0;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+h1:hover {
+  transition: all 0.2s;
+  color: white;
 }
 
 .toolbar {
@@ -38,8 +58,9 @@ button {
 }
 
 button:hover {
-  transition: all 0.2s;
+  transition: all 0.5s;
   background-color: var(--dark-light);
+  color: #ffe0d8;
 }
 
 button {

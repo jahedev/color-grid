@@ -6,6 +6,15 @@ import './styles/app.css';
 var limit = 25;
 var updateGrid;
 
+function getRandomColor() {
+  var letters = 'BCDEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * letters.length)];
+  }
+  return color;
+}
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +22,7 @@ export default class App extends Component {
       rows: 10,
       cols: 10,
       grid: [[]],
-      color: 'red',
+      color: '#ff577f',
     };
 
     this.genKey = this.genKey.bind(this);
@@ -37,6 +46,14 @@ export default class App extends Component {
 
     updateGrid = grid;
     this.setState({ grid: grid });
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      const h1 = document.querySelector('h1');
+      const color = getRandomColor();
+      h1.style.color = color;
+    }, 1000);
   }
 
   genKey = () => {
@@ -73,7 +90,7 @@ export default class App extends Component {
       console.log('Row:', rowNum, ' Col:', colNum);
 
       updateGrid[rowNum][colNum] = color;
-      e.target.style.backgroundColor = 'red';
+      e.target.style.backgroundColor = color;
     }
   };
 
@@ -82,7 +99,7 @@ export default class App extends Component {
     return (
       <div>
         <div className='header-container'>
-          <h1>React Color Grid</h1>
+          <h1>React.js Color Grid</h1>
           {
             <Toolbar
               toolbar={[
@@ -96,16 +113,17 @@ export default class App extends Component {
               ]}
             />
           }
-          <h5>
-            Rows: {this.state.rows}, Cols: {this.state.cols}
-          </h5>
         </div>
+        <h5>
+          Rows: {this.state.rows}, Cols: {this.state.cols}
+        </h5>
         <div className='table' onMouseOver={this.handleColoring}>
           <Table
             key={this.state.rows * this.state.cols * 3}
             rows={this.state.rows}
             cols={this.state.cols}
             grid={this.state.grid}
+            color={this.state.color}
           />
         </div>
       </div>
