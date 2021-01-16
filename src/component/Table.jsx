@@ -14,17 +14,15 @@ class Table extends Component {
     this.state = {
       rows: props.rows,
       cols: props.cols,
-      grid: props.grid,
     };
   }
 
   render() {
     let rows = [];
     for (let i = 1; i <= this.state.rows; i++) {
-      let colgrid = this.state.grid[i - 1];
       let color = rows.push(
         <TableRow
-          colgrid={colgrid}
+          mouseOver={this.props.mouseOver}
           rowNum={rowNum++}
           key={i}
           cols={this.state.cols}

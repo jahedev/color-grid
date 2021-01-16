@@ -8,7 +8,6 @@ export default class App extends Component {
     this.state = {
       rows: 10,
       cols: 10,
-      grid: [[]],
       color: 'red',
     };
 
@@ -63,12 +62,13 @@ export default class App extends Component {
       let rowNum = Number(e.target.parentNode.className);
       console.log('Row:', rowNum, ' Col:', colNum);
 
-      // console.log(this.state.grid[0][0]);
-      let grid = this.state.grid;
-      grid[rowNum][colNum] = color;
-      this.setState({ grid: grid });
+      // // console.log(this.state.grid[0][0]);
+      // let grid = this.state.grid;
+      // grid[rowNum][colNum] = color;
+      // this.setState({ grid: grid });
 
-      // td.style.backgroundColor = 'red';
+      const td = e.target;
+      td.style.backgroundColor = this.state.color;
     }
   };
 
@@ -92,12 +92,12 @@ export default class App extends Component {
             ]}
           />
         }
-        <div className='table' onMouseOver={this.handleColoring}>
+        <div className='table'>
           <Table
             key={this.state.rows * this.state.cols * 3}
             rows={this.state.rows}
             cols={this.state.cols}
-            grid={this.state.grid}
+            mouseOver={this.handleColoring}
           />
         </div>
       </div>

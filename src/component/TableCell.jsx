@@ -10,9 +10,10 @@ class TableCell extends Component {
 
   render() {
     const { color = '' } = this.props;
+    // style={{ backgroundColor: color }}
 
     return (
-      <td style={{ backgroundColor: color }} className={this.state.colNum}>
+      <td onMouseOver={this.props.mouseOver} className={this.state.colNum}>
         {this.props.data}
       </td>
     );
