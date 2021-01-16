@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  --dark: #222831;
+  --dark-light: #364f6b;
+}
+
+* {
+  margin: auto;
+  padding: auto;
+}
+
+body {
+  background-color: #eeeeee;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+h1,
+h5 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.toolbar {
+  display: flexbox;
+  margin-bottom: 15px;
+}
+
+button {
+  font-family: Lato, Arial, Helvetica, sans-serif;
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  transition: all 0.2s;
+  background-color: var(--dark-light);
+}
+
+button {
+  background-color: var(--dark);
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

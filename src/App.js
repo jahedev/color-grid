@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
+import './styles/app.css';
 
 var limit = 25;
 var updateGrid;
@@ -80,22 +81,25 @@ export default class App extends Component {
     console.log('rendered');
     return (
       <div>
-        <h1>
-          Rows: {this.state.rows}, Cols: {this.state.cols}
-        </h1>
-        {
-          <Toolbar
-            toolbar={[
-              { name: 'Add Row', func: this.addRow },
-              { name: 'Add Column', func: this.addCol },
-              { name: 'Del Row', func: this.delRow },
-              { name: 'Del Column', func: this.delCol },
-              { name: 'Fill All', func: this.delCol },
-              { name: 'Fill Uncolored', func: this.delCol },
-              { name: 'Clear All', func: this.delCol },
-            ]}
-          />
-        }
+        <div className='header-container'>
+          <h1>React Color Grid</h1>
+          {
+            <Toolbar
+              toolbar={[
+                { name: 'Add Row', func: this.addRow },
+                { name: 'Add Column', func: this.addCol },
+                { name: 'Del Row', func: this.delRow },
+                { name: 'Del Column', func: this.delCol },
+                { name: 'Fill All', func: this.delCol },
+                { name: 'Fill Uncolored', func: this.delCol },
+                { name: 'Clear All', func: this.delCol },
+              ]}
+            />
+          }
+          <h5>
+            Rows: {this.state.rows}, Cols: {this.state.cols}
+          </h5>
+        </div>
         <div className='table' onMouseOver={this.handleColoring}>
           <Table
             key={this.state.rows * this.state.cols * 3}
