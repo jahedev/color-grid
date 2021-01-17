@@ -18,6 +18,13 @@ var limit = 25;
 // it is saved to this.state.grid
 var updateGrid = [[]];
 
+// Mouse Events on Table
+var table;
+var events = {
+  mouseDown: false,
+  mouseLeft: true,
+};
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +35,6 @@ export default class App extends Component {
       color: '#ff577f', // default color
     };
 
-    this.genKey = this.genKey.bind(this);
     this.addRow = this.addRow.bind(this);
     this.addCol = this.addCol.bind(this);
     this.delRow = this.delRow.bind(this);
@@ -36,6 +42,7 @@ export default class App extends Component {
     this.fillAll = this.fillAll.bind(this);
     this.fillUncolored = this.fillUncolored.bind(this);
     this.clearAll = this.clearAll.bind(this);
+    this.updateColor = this.updateColor.bind(this);
     this.updateGrid = this.updateGrid.bind(this);
     this.handleColoring = this.handleColoring.bind(this);
   }
@@ -52,14 +59,25 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    colorHeader(document.querySelector('h1'));
+    // colorHeader(document.querySelector('h1'));
+    table = document.querySelector('.table');
+
+    table.onmousedown = function () {
+      events.mouseDown = true;
+    };
+    table.onmouseup = function () {
+      events.mouseDown = false;
+    };
+
+    table.addEventListener('click', (e) => this.updateColor(e));
+    table.addEventListener('mouseleave', (e) => (events.mouseLeft = true));
+    table.addEventListener('mousedown', (e) => {
+      events.mouseLeft = false;
+      this.updateColor(e);
+    });
   }
 
   /* #region : class methods */
-  genKey = () => {
-    console.log(this.state.rows * this.state.cols * 3);
-    return this.state.rows * this.state.cols * 3;
-  };
 
   addRow = (n = 1) => {
     this.updateGrid();
@@ -87,7 +105,6 @@ export default class App extends Component {
         updateGrid[i][j] = this.state.color;
       }
     }
-
     this.updateGrid();
   };
 
@@ -97,37 +114,54 @@ export default class App extends Component {
         if (updateGrid[i][j] == '') updateGrid[i][j] = this.state.color;
       }
     }
-
     this.updateGrid();
   };
-  clearAll = () => {};
+  clearAll = () => {
+    // this method fills the whole grid witha color and
+    // then clears it after 300ms, otherwise for some reason
+    // react does not re-render.
+    this.fillAll();
+    setTimeout(() => {
+      for (var i = 0; i < limit; i++) {
+        for (var j = 0; j < limit; j++) {
+          updateGrid[i][j] = '';
+        }
+      }
+      this.updateGrid();
+    }, 300);
+  };
 
   changeColor = (color) => {
     this.setState({ color: color.hex });
-    console.log(this.state.color);
   };
 
   updateGrid = () => {
     this.setState({ grid: updateGrid });
   };
 
-  handleColoring = (e) => {
-    const color = this.state.color;
-
+  updateColor = (e) => {
     if (e.target.tagName == 'TD') {
+      const td = e.target;
+      const color = this.state.color;
+
       let colNum = Number(e.target.className);
       let rowNum = Number(e.target.parentNode.className);
-      console.log('Row:', rowNum, ' Col:', colNum);
 
+      // save changes to updateGrid and color the table
       updateGrid[rowNum][colNum] = color;
       e.target.style.backgroundColor = color;
+    }
+  };
+
+  handleColoring = (e) => {
+    if (events.mouseDown && !events.mouseLeft) {
+      this.updateColor(e);
     }
   };
 
   /* #endregion : class methods */
 
   render() {
-    console.log('rendered');
     return (
       <div>
         <div className='header-container'>
