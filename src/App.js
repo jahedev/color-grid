@@ -1,30 +1,31 @@
+// React Stuff
 import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
 import { SketchPicker } from 'react-color';
+
+// JS Helper Code
+import { colorHeader } from './helpers/color.js';
+
+// CSS
 import './styles/app.css';
 
+// user is never allowed to add more than "limit"
+// number of rows or cols
 var limit = 25;
-var updateGrid;
 
-function getRandomColor() {
-  var letters = 'BCDEF'.split('');
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * letters.length)];
-  }
-  return color;
-}
+// This 2D array is used to save user's colors before
+// it is saved to this.state.grid
+var updateGrid = [[]];
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       rows: 10,
       cols: 10,
       grid: [[]],
-      color: '#ff577f',
+      color: '#ff577f', // default color
     };
 
     this.genKey = this.genKey.bind(this);
@@ -32,60 +33,82 @@ export default class App extends Component {
     this.addCol = this.addCol.bind(this);
     this.delRow = this.delRow.bind(this);
     this.delCol = this.delCol.bind(this);
+    this.fillAll = this.fillAll.bind(this);
+    this.fillUncolored = this.fillUncolored.bind(this);
+    this.clearAll = this.clearAll.bind(this);
+    this.updateGrid = this.updateGrid.bind(this);
     this.handleColoring = this.handleColoring.bind(this);
   }
 
   componentWillMount() {
-    let grid = [[]];
-
-    // user is never allowed to add more than 50 columns or rows
     for (var i = 0; i < limit; i++) {
-      grid[i] = []; // <===== initialize the row
+      updateGrid[i] = []; // <===== initialize the row
       for (var j = 0; j < limit; j++) {
-        grid[i][j] = '';
+        updateGrid[i][j] = '';
       }
     }
 
-    updateGrid = grid;
-    this.setState({ grid: grid });
+    this.updateGrid();
   }
 
   componentDidMount() {
-    setInterval(() => {
-      const h1 = document.querySelector('h1');
-      const color = getRandomColor();
-      h1.style.color = color;
-    }, 1200);
+    colorHeader(document.querySelector('h1'));
   }
 
+  /* #region : class methods */
   genKey = () => {
     console.log(this.state.rows * this.state.cols * 3);
     return this.state.rows * this.state.cols * 3;
   };
 
   addRow = (n = 1) => {
-    this.setState({ grid: updateGrid });
+    this.updateGrid();
     if (this.state.rows < limit) this.setState({ rows: ++this.state.rows });
   };
 
   addCol = (n = 1) => {
-    this.setState({ grid: updateGrid });
+    this.updateGrid();
     if (this.state.cols < limit) this.setState({ cols: ++this.state.cols });
   };
 
   delRow = (n = 1) => {
-    this.setState({ grid: updateGrid });
+    this.updateGrid();
     this.state.rows > 1 && this.setState({ rows: --this.state.rows });
   };
 
   delCol = (n = 1) => {
-    this.setState({ grid: updateGrid });
+    this.updateGrid();
     this.state.cols > 1 && this.setState({ cols: --this.state.cols });
   };
+
+  fillAll = () => {
+    for (var i = 0; i < limit; i++) {
+      for (var j = 0; j < limit; j++) {
+        updateGrid[i][j] = this.state.color;
+      }
+    }
+
+    this.updateGrid();
+  };
+
+  fillUncolored = () => {
+    for (var i = 0; i < limit; i++) {
+      for (var j = 0; j < limit; j++) {
+        if (updateGrid[i][j] == '') updateGrid[i][j] = this.state.color;
+      }
+    }
+
+    this.updateGrid();
+  };
+  clearAll = () => {};
 
   changeColor = (color) => {
     this.setState({ color: color.hex });
     console.log(this.state.color);
+  };
+
+  updateGrid = () => {
+    this.setState({ grid: updateGrid });
   };
 
   handleColoring = (e) => {
@@ -100,6 +123,8 @@ export default class App extends Component {
       e.target.style.backgroundColor = color;
     }
   };
+
+  /* #endregion : class methods */
 
   render() {
     console.log('rendered');
@@ -116,9 +141,9 @@ export default class App extends Component {
                 { name: 'Add Column', func: this.addCol },
                 { name: 'Del Row', func: this.delRow },
                 { name: 'Del Column', func: this.delCol },
-                { name: 'Fill All', func: this.delCol },
-                { name: 'Fill Uncolored', func: this.delCol },
-                { name: 'Clear All', func: this.delCol },
+                { name: 'Fill All', func: this.fillAll },
+                { name: 'Fill Uncolored', func: this.fillUncolored },
+                { name: 'Clear All', func: this.clearAll },
               ]}
             />
           }

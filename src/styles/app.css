@@ -28,6 +28,7 @@ h5 {
 }
 
 h1 {
+  margin-top: 0;
   padding: 20px 0;
   cursor: default;
   -webkit-user-select: none;
@@ -35,11 +36,6 @@ h1 {
   -ms-user-select: none;
   user-select: none;
   transition: all 0.2s;
-}
-
-h1:hover {
-  transition: all 0.2s;
-  color: white;
 }
 
 .toolbar {
@@ -56,15 +52,10 @@ button {
   cursor: pointer;
   outline: none;
 }
-
 button:hover {
   transition: all 0.5s;
   background-color: var(--dark-light);
   color: #16c79a;
-}
-
-button {
-  background-color: var(--dark);
 }
 
 .red {
