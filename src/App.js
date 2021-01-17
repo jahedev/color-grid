@@ -153,6 +153,7 @@ export default class App extends Component {
         </h5>
         <div className='separated-columns'>
           <div className='sketcher-picker'>
+            {/* A third party color picker library */}
             <SketchPicker
               color={this.state.color}
               onChange={this.changeColor}

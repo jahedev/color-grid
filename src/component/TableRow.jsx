@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import TableCell from './TableCell';
 
-import store from '../States';
-
 var colNum = 0;
 
 class TableRow extends Component {

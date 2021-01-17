@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import TableRow from './TableRow';
-// import store from '../States';
 
 // CSS
 import '../styles/table.css';
