@@ -1,11 +1,8 @@
-// React Stuff
+// React
 import React, { Component } from 'react';
 import Table from './component/Table';
 import Toolbar from './component/Toolbar';
 import { SketchPicker } from 'react-color';
-
-// JS Helper Code
-import { colorHeader } from './helpers/color.js';
 
 // CSS
 import './styles/app.css';
@@ -116,6 +113,7 @@ export default class App extends Component {
     }
     this.updateGrid();
   };
+
   clearAll = () => {
     // this method fills the whole grid witha color and
     // then clears it after 300ms, otherwise for some reason
@@ -140,6 +138,8 @@ export default class App extends Component {
   };
 
   updateColor = (e) => {
+    // colors a TD and saves changes to updateGrid
+    // without changing this.state.grid
     if (e.target.tagName == 'TD') {
       const td = e.target;
       const color = this.state.color;
@@ -195,7 +195,7 @@ export default class App extends Component {
           </div>
           <div className='table' onMouseOver={this.handleColoring}>
             <Table
-              key={this.state.rows * this.state.cols * 3}
+              key={this.state.rows * this.state.cols}
               rows={this.state.rows}
               cols={this.state.cols}
               grid={this.state.grid}

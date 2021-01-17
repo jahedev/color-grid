@@ -3,14 +3,10 @@ import React, { Component } from 'react';
 class Button extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: props.name,
-      func: props.func,
-    };
   }
 
   render() {
-    return <button onClick={this.state.func}>{this.state.name}</button>;
+    return <button onClick={this.props.func}>{this.props.name}</button>;
   }
 }
 
