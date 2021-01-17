@@ -84,7 +84,7 @@ export default class App extends Component {
   };
 
   changeColor = (color) => {
-    this.setState({ color: color.rgb });
+    this.setState({ color: color.hex });
     console.log(this.state.color);
   };
 
@@ -126,16 +126,23 @@ export default class App extends Component {
         <h5>
           Rows: {this.state.rows}, Cols: {this.state.cols}
         </h5>
-        <div className='table' onMouseOver={this.handleColoring}>
-          <Table
-            key={this.state.rows * this.state.cols * 3}
-            rows={this.state.rows}
-            cols={this.state.cols}
-            grid={this.state.grid}
-            color={this.state.color}
-          />
+        <div className='separated-columns'>
+          <div className='sketcher-picker'>
+            <SketchPicker
+              color={this.state.color}
+              onChange={this.changeColor}
+            />
+          </div>
+          <div className='table' onMouseOver={this.handleColoring}>
+            <Table
+              key={this.state.rows * this.state.cols * 3}
+              rows={this.state.rows}
+              cols={this.state.cols}
+              grid={this.state.grid}
+              color={this.state.color}
+            />
+          </div>
         </div>
-        <SketchPicker color={this.state.color} onChange={this.changeColor} />
       </div>
     );
   }

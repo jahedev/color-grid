@@ -71,8 +71,33 @@ button {
   color: #f05454;
 }
 
-.table {
+.separated-columns {
   display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+.table {
+  display: inline;
+  margin-left: 4rem;
+}
+
+.sketcher-picker {
+  float: left;
+}
+
+@media all and (max-width: 850px) {
+  .separated-columns {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .table {
+    display: block;
+    margin: 0;
+    margin-bottom: 25px;
+  }
+
+  .sketcher-picker {
+    float: none;
+  }
 }
