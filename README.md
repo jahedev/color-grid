@@ -1,4 +1,4 @@
-# React.js Color Grid | TTP Assignment 8
+# React.js Color Grid | TTP Project 8
 
 ## Contributors
 
@@ -7,7 +7,7 @@
 - Mohammed Hossain
 
 ### View Site Here
-- https://jahedev.github.io/assignment-8/
+- https://jahedev.github.io/color-grid/
 
 ### Notes
 
