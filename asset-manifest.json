@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/assignment-8/static/css/main.078ad007.chunk.css",
-    "main.js": "/assignment-8/static/js/main.5029ca4d.chunk.js",
-    "main.js.map": "/assignment-8/static/js/main.5029ca4d.chunk.js.map",
-    "runtime-main.js": "/assignment-8/static/js/runtime-main.e4c3c592.js",
-    "runtime-main.js.map": "/assignment-8/static/js/runtime-main.e4c3c592.js.map",
-    "static/js/2.4ab1c15a.chunk.js": "/assignment-8/static/js/2.4ab1c15a.chunk.js",
-    "static/js/2.4ab1c15a.chunk.js.map": "/assignment-8/static/js/2.4ab1c15a.chunk.js.map",
-    "index.html": "/assignment-8/index.html",
-    "static/css/main.078ad007.chunk.css.map": "/assignment-8/static/css/main.078ad007.chunk.css.map",
-    "static/js/2.4ab1c15a.chunk.js.LICENSE.txt": "/assignment-8/static/js/2.4ab1c15a.chunk.js.LICENSE.txt"
+    "main.css": "/color-grid/static/css/main.ca73a742.chunk.css",
+    "main.js": "/color-grid/static/js/main.2fb76e10.chunk.js",
+    "main.js.map": "/color-grid/static/js/main.2fb76e10.chunk.js.map",
+    "runtime-main.js": "/color-grid/static/js/runtime-main.d1c4447b.js",
+    "runtime-main.js.map": "/color-grid/static/js/runtime-main.d1c4447b.js.map",
+    "static/js/2.4ab1c15a.chunk.js": "/color-grid/static/js/2.4ab1c15a.chunk.js",
+    "static/js/2.4ab1c15a.chunk.js.map": "/color-grid/static/js/2.4ab1c15a.chunk.js.map",
+    "index.html": "/color-grid/index.html",
+    "static/css/main.ca73a742.chunk.css.map": "/color-grid/static/css/main.ca73a742.chunk.css.map",
+    "static/js/2.4ab1c15a.chunk.js.LICENSE.txt": "/color-grid/static/js/2.4ab1c15a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e4c3c592.js",
+    "static/js/runtime-main.d1c4447b.js",
     "static/js/2.4ab1c15a.chunk.js",
-    "static/css/main.078ad007.chunk.css",
-    "static/js/main.5029ca4d.chunk.js"
+    "static/css/main.ca73a742.chunk.css",
+    "static/js/main.2fb76e10.chunk.js"
   ]
 }
