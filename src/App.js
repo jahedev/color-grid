@@ -86,22 +86,22 @@ export default class App extends Component {
 
   addRow = (n = 1) => {
     this.updateGrid()
-    if (this.state.rows < limit) this.setState({ rows: ++this.state.rows })
+    if (this.state.rows < limit) this.setState({ rows: this.state.rows + 1 })
   }
 
   addCol = (n = 1) => {
     this.updateGrid()
-    if (this.state.cols < limit) this.setState({ cols: ++this.state.cols })
+    if (this.state.cols < limit) this.setState({ cols: this.state.cols + 1 })
   }
 
   delRow = (n = 1) => {
     this.updateGrid()
-    this.state.rows > 1 && this.setState({ rows: --this.state.rows })
+    this.state.rows > 1 && this.setState({ rows: this.state.rows - 1 })
   }
 
   delCol = (n = 1) => {
     this.updateGrid()
-    this.state.cols > 1 && this.setState({ cols: --this.state.cols })
+    this.state.cols > 1 && this.setState({ cols: this.state.cols - 1 })
   }
 
   fillAll = () => {
@@ -161,16 +161,16 @@ export default class App extends Component {
   updateColor = (e) => {
     // colors a TD and saves changes to updateGrid
     // without changing this.state.grid
-    if (e.target.tagName == 'TD') {
+    if (e.target.tagName === 'TD') {
       const td = e.target
       const color = this.state.color
 
-      let colNum = Number(e.target.className)
-      let rowNum = Number(e.target.parentNode.className)
+      let colNum = Number(td.className)
+      let rowNum = Number(td.parentNode.className)
 
       // save changes to updateGrid and color the table
       updateGrid[rowNum][colNum] = color
-      e.target.style.backgroundColor = color
+      td.style.backgroundColor = color
     }
   }
 
