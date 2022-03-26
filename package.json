@@ -1,6 +1,6 @@
 {
-  "homepage": "https://jahedev.github.io/assignment-8",
-  "name": "assignment-8",
+  "homepage": "https://jahedev.github.io/color-grid/",
+  "name": "color-grid",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
